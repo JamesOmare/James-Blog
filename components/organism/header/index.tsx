@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { headerData } from '@/data/headerData'
 import useMode from '@/utils/themeMode'
 import MobileNav from './MobileNav'
+import Image from 'next/image'
 
 /**
  * Our Header is a reusable UI component that used to represent top navbar section of any website.
@@ -23,7 +24,14 @@ const Header = () => {
             <div className="navbar grid grid-cols-12">
                <div className="col-span-3">
                   <Link href={`/`}>
-                     <Logo className={`text-base-content`} />
+                  <Image
+                     src="/Logo24.png"
+                     className="w-[25em] sm:w-[35em] md:w-[30em] lg:w-[25em] h-auto"
+                     alt="Logo"
+                     width={158}
+                     height={72}
+                     priority
+                  />
                   </Link>
                </div>
                <nav className="hidden xl:block col-span-6">
