@@ -11,11 +11,10 @@ const SinglePost = () => {
             <div className="container mx-auto px-5 md:px-0 w-full md:w-10/12 lg:w-5/12 font-work">
                <div className="py-5">
                   <div className="w-fit text-white px-2.5 py-1 bg-primary text-xs md:text-sm rounded-md mb-2 md:mb-4 font-medium">
-                     Technology
+                     Lifestyle
                   </div>
                   <h3 className="text-base-content font-semibold text-xl md:text-2xl lg:text-4xl leading-5 md:leading-10 ">
-                     The Impact of Technology on the Workplace: How Technology
-                     is Changing
+                     Hello Ha! 
                   </h3>
                   <div className="mt-3 md:mt-6 flex items-center gap-5 text-base-content/60">
                      <div className=" flex items-center gap-3">
@@ -31,7 +30,7 @@ const SinglePost = () => {
                            href="/"
                            className=" text-xs md:text-sm font-medium hover:text-primary transition hover:duration-300"
                         >
-                           Jason Francisco
+                           Kafka
                         </a>
                      </div>
                      <p className="text-xs md:text-sm">August 20, 2022</p>
