@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 export const metadata = {
    title: 'Single Post Page | MetaBlog',
@@ -20,9 +21,12 @@ const SinglePost = () => {
                      <div className=" flex items-center gap-3">
                         <div className="avatar">
                            <div className="w-9 rounded-full">
-                              <img
+                              <Image
                                  src="https://placehold.it/100x100"
                                  alt="avatar"
+                                 width={100}
+                                 height={100}
+                                 className="rounded-full"
                               />
                            </div>
                         </div>
@@ -37,11 +41,11 @@ const SinglePost = () => {
                   </div>
                </div>
                <div className="mt-8">
-                  <img
-                     width="800"
-                     height="462"
-                     alt={`blog_image`}
-                     className={`rounded-xl`}
+                  <Image
+                     width={800}
+                     height={462}
+                     alt="blog_image"
+                     className="rounded-xl"
                      src="https://placehold.it/800x462"
                   />
                </div>
@@ -109,7 +113,7 @@ const SinglePost = () => {
                      </p>
                   </div>
                   <div className="mt-8">
-                     <img
+                     <Image
                         width="800"
                         height="462"
                         alt={`blog_image`}

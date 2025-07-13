@@ -7,6 +7,7 @@ const nextConfig = {
    images: {
       domains: ['placehold.it', 'via.placeholder.com'],
    },
+   output: 'standalone'
 }
 
 module.exports = nextConfig

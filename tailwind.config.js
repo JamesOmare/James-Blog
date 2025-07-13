@@ -10,10 +10,12 @@ module.exports = {
          xl: '1216px',
       },
       extend: {
+         // getting error Failed to download font:
+         // just remove the single strings and add double and vice versa
          fontFamily: {
-            sans: ['var(--font-plus-jakarta-sans)'], // this font-family is used for the footer
-            work: ['var(--font-work-sans)'], // this font-family is used for the headings
-            serif: ['var(--font-source-serif-pro)'], // this font-family is used for the body like ( p, li, etc. )
+            sans: ["var(--font-plus-jakarta-sans)"], // this font-family is used for the footer
+            work: ["var(--font-work-sans)"], // this font-family is used for the headings
+            serif: ["var(--font-source-serif-pro)"], // this font-family is used for the body like ( p, li, etc. )
             mono: ["var(--font-roboto-mono)"],
             "dancing-script": ["var(--font-dancing-script)"],
          },

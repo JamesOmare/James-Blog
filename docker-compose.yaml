@@ -1,0 +1,38 @@
+# version: '3.8'
+version: '3.8'
+
+services:
+  kafka_blog:
+    image: kafka_blog
+    container_name: kafka_blog
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '${APP_PORT}:${APP_PORT}'
+    volumes:
+      - .:/app                                        # Mount full project into /app
+      - kafka_blog_node_modules:/app/node_modules     # Keeps node_modules container-only
+      - kafka_blog_build:/app/.next                   # Keeps build output container-only
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+
+  kafka_blog_prod:
+    image: kafka_blog-prod
+    container_name: kafka_blog-prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    # No volumes for production to keep it clean and immutable
+
+volumes:
+  kafka_blog_node_modules:
+  kafka_blog_build:

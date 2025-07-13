@@ -1,0 +1,52 @@
+# syntax=docker/dockerfile:1
+
+### Step 1: Build Stage
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Install OS dependencies for Node.js build (optional for Next.js native modules)
+RUN apk add --no-cache g++ make py3-pip libc6-compat
+
+# Copy dependency manifests
+COPY package.json package-lock.json ./
+
+# Install only prod+build dependencies
+RUN npm ci
+
+# Copy entire app (assumes all code is at root)
+COPY . .
+
+# RUN npm install && \
+#     npm rebuild --arch=x64 --platform=linux --libc=musl sharp
+
+# Required for output tracing and standalone
+ENV NODE_ENV=production
+ENV NEXT_SHARP_PATH=/app/node_modules/sharp
+
+# Ensure standalone output is enabled in next.config.js
+# -> module.exports = { output: 'standalone' }
+RUN npm run build
+
+
+### Step 2: Production Runner
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+
+# Add non-root user for security
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs
+USER nextjs
+
+# Copy necessary files from build
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+
+# Optional: environment variables (can also be passed via docker-compose)
+ENV NODE_ENV=production
+ENV NEXT_SHARP_PATH=/app/node_modules/sharp
+
+# Default command — start the production server
+CMD ["node", "server.js"]
