@@ -21,7 +21,7 @@ const Footer = () => {
          <div className="container mx-auto">
             <div className="grid grid-cols-12 gap-5 py-16">
                <div className="col-span-12 lg:col-span-3">
-                  <h5 className="text-lg font-semibold text-base-content font-sans">
+                  <h5 className="text-lg font-semibold text-base-content font-dancing-script">
                      About
                   </h5>
                   <p className="mt-3 text-base text-base-content/70 mb-6">
